@@ -24,7 +24,7 @@ public class AppConfig {
         return new PaypalPaymentService();
     }
 
-    @Beangit
+    @Bean
     public OrderService orderService(){
         if (paymentGatway.equals("stripe")) {
             return new OrderService(stripe());
