@@ -1,14 +1,17 @@
 package com.codewithkishan.onlinestore;
 
+import com.codewithkishan.onlinestore.service.OrderService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class OnlineStoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OnlineStoreApplication.class, args);
-        System.out.println("I am feeling cool");
+      ApplicationContext context = SpringApplication.run(OnlineStoreApplication.class, args);
+        var orderService = context.getBean(OrderService.class);
+        orderService.placeOrder();
     }
 
 }
