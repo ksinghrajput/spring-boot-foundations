@@ -14,7 +14,6 @@ import lombok.*;
 public class Profile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -30,7 +29,8 @@ public class Profile {
     @Column(name = "loyalty_points")
     private Integer loyaltyPoint;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
     @JoinColumn(name = "id")
     @ToString.Exclude
     private User user;

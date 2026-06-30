@@ -71,7 +71,7 @@ public class User {
     private Set<Tag> tags = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
-    @MapsId
+    @ToString.Exclude
     private Profile profile;
 
     @ManyToMany

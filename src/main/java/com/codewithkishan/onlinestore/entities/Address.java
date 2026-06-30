@@ -2,6 +2,7 @@ package com.codewithkishan.onlinestore.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.engine.profile.Fetch;
 
 @Setter
 @Getter
@@ -31,7 +32,7 @@ public class Address {
     private String address;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @ToString.Exclude
     private User user;
