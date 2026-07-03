@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.SQLOutput;
 
 @AllArgsConstructor
@@ -66,7 +67,7 @@ public class UserService {
     @Transactional
     public void manageProducts(){
 
-        var category = new Category("category1");
+        var category = new Category((byte) 1);
 
         var product = Product.builder()
                 .description("Desc")
@@ -79,6 +80,24 @@ public class UserService {
 
 
     }
+
+    @Transactional
+    public void findProducts(){
+        productRepository.findProducts(BigDecimal.valueOf(10), BigDecimal.valueOf(11));
+    }
+
+
+    @Transactional
+    public void updateProductPrices(){
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte)1);
+    }
+
+    public void fetchProducts(){
+        var products = productRepository.findByCategory(new Category((byte) 1));
+        products.forEach(System.out::println);
+
+    }
+
 
 
 }

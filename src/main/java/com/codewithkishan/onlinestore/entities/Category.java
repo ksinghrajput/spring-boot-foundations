@@ -1,10 +1,7 @@
 package com.codewithkishan.onlinestore.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -29,7 +26,11 @@ public class Category {
     private Set<Product> products = new HashSet<>();
 
 
-    public Category(String name) {
-    this.name = name;
+//    public Category(String name) {
+//    this.name = name;
+//    }
+
+    public Category(byte categoryId) {
+        this.id = categoryId;
     }
 }

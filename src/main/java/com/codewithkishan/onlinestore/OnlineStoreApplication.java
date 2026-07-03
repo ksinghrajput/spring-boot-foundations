@@ -13,7 +13,7 @@ public class OnlineStoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(OnlineStoreApplication.class, args);
         var service = context.getBean(UserService.class);
-        service.manageProducts();
+        service.fetchProducts();
 
     }
 
