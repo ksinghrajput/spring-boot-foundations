@@ -10,6 +10,7 @@ import com.codewithkishan.onlinestore.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -93,9 +94,18 @@ public class UserService {
     }
 
     public void fetchProducts(){
-        var products = productRepository.findByCategory(new Category((byte) 1));
-        products.forEach(System.out::println);
+        var product = new Product();
+        product.setName("product");
+        var example = Example.of(product);
+    }
 
+    @Transactional
+    public void fetchUsers(){
+        var users = userRepository.fingAllWithTags();
+        users.forEach(u -> {
+            System.out.println(u);
+            u.getAddresses().forEach(System.out::println);
+        });
     }
 
 

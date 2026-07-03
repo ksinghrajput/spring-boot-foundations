@@ -2,9 +2,7 @@ package com.codewithkishan.onlinestore.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.Array2DHashSet;
 
-import javax.annotation.processing.Generated;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +12,6 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -81,4 +78,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private Set<Product> wishlist = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "email = " + email + ")";
+    }
 }
